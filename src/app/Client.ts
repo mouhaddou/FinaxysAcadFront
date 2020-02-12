@@ -1,5 +1,5 @@
 export class Client {
-     id:number;  
+     id:any;  
     fullName:String;  
     dateOfBirth:any;     
 }

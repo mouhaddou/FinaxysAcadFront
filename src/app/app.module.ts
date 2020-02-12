@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from "@angular/router";
-//import { FormsModule } from '@angular/forms';
+import {routing} from './app-routing.module'
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import {DataTablesModule} from 'angular-datatables';  
+
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppComponent } from './app.component';
@@ -16,13 +16,14 @@ import { ClientListComponent } from './client-list/client-list.component';
   declarations: [
     AppComponent,
     AddEmplComponent,
+    
     ClientListComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,ReactiveFormsModule,
-    HttpModule,HttpClientModule
+    HttpModule,HttpClientModule,routing
   ],
   providers: [],
   bootstrap: [AppComponent]
