@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';  
 import { Client } from '../client';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import {FormControl,FormGroup,Validators} from '@angular/forms';  
 @Component({
   selector: 'add-empl',
@@ -10,7 +11,13 @@ import {FormControl,FormGroup,Validators} from '@angular/forms';
 })
 export class AddEmplComponent implements OnInit {
 
-  constructor(private clientservice:ClientService) { }
+  constructor(private clientservice:ClientService,
+              private formBuilder: FormBuilder) {
+                this.clientsaveform = this.formBuilder.group({
+      fullName: '',
+      dateOfBirth: ''
+    });
+               }
   client : Client  = new Client();
   submitted = false; 
 
@@ -18,25 +25,26 @@ export class AddEmplComponent implements OnInit {
     this.submitted=false;  
   }
     clientsaveform=new FormGroup({  
-    fullName:new FormControl('' , [Validators.required , Validators.minLength(15) ] ),  
-    dateOfBirth:new FormControl('',[Validators.required,Validators.nullValidator]),  
+    fullName:new FormControl(''),  
+    dateOfBirth:new FormControl(''),  
     
   }); 
- saveClient(saveClient){  
-    this.client=new Client();     
-    this.client.fullName=this.fullName.value;  
-    this.client.dateOfBirth=this.dateOfBirth.value;  
-   
+ saveCli(clientsaveform){  
+    this.client=new Client();   
+
+    this.client.fullName=clientsaveform.fullName;  
+    this.client.dateOfBirth=clientsaveform.dateOfBirth;  
+    console.log("save is here", clientsaveform);
     this.submitted = true;  
-    this.save();  
+    this.save(this.client);  
   }  
   
     
   
-  save() {  
-    this.clientservice.createClient(this.client)  
+  save(client) {  
+    this.clientservice.createClient(client)  
       .subscribe(data => console.log(data), error => console.log(error));  
-    this.client = new Client();  
+   // this.client = new Client();  
   }  
   
   get fullName(){  

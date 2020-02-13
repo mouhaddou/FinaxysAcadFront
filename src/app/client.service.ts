@@ -16,6 +16,7 @@ getClientList(): Observable<Object> {
     
   }
     createClient(client: object): Observable<object> {  
+      console.log("createClient is here",client);
     return this.http.post(`${this.baseUrl}`+'createEmpl', client);  
   }   
   deleteClient(id: number): Observable<any> {  

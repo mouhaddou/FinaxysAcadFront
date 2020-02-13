@@ -3,30 +3,14 @@
   <div class="col-sm-4"></div>  
   <div class="col-sm-4" >  
     <div [hidden]="submitted" style="width: 400px;">  
-      <form [formGroup]="clientsaveform" #saveClient (ngSubmit)="saveClient(saveClient)">  
+      <form [formGroup]="clientsaveform"  (ngSubmit)="saveCli(clientsaveform.value)">  
           <div class="form-group">  
               <label for="name">Nom du Salarie :</label>  
-              <input type="text" class="form-control"  formControlName="fullName" data-toggle="tooltip"   
-                 data-placement="right" title="Enterer le nom complet" >  
-             <!--<div class="alert alert-danger" *ngIf = "(fullName.touched) && (fullName.invalid)"   
-                style="margin-top: 5px;">  
-                  <span *ngIf="fullName.errors.required">full Name is Required</span>  
-                    <span *ngIf = "fullName.errors.minlength">   
-                        MinLength Error   
-                    </span>                     
-                </div> -->  
+              <input type="text" class="form-control"  formControlName="fullName">               
           </div>      
           <div class="form-group">  
               <label for="name">Date de Naissance : </label>  
-              <input type="date" class="form-control" formControlName="dateOfBirth"   
-                data-toggle="tooltip" data-placement="right" title="Entrer la date de naissance">  
-                <div class="alert alert-danger" *ngIf = "(dateOfBirth.touched) && (dateOfBirth.invalid)"   
-                style="margin-top: 5px;">  
-                  <span *ngIf="dateOfBirth.errors.required">Client Email is Required</span>  
-                    <span *ngIf = "dateOfBirth.errors.email">   
-                        Invalid Email Format   
-                    </span>                     
-                </div>  
+              <input type="date" class="form-control" formControlName="dateOfBirth">                  
           </div>                   
           <button type="submit" class="btn btn-success">Soumettre</button>  
       </form>  
@@ -44,3 +28,26 @@
   </div>  
   <div class="col-sm-4"></div>  
 </div>  
+
+
+
+
+<!--<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="address">
+      Address
+    </label>
+    <input id="address" type="text" formControlName="address">
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+
+</form>-->
