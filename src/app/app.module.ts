@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AddEmplComponent } from './add-empl/add-empl.component';
 import { ClientListComponent } from './client-list/client-list.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ClientListComponent } from './client-list/client-list.component';
     AppComponent,
     AddEmplComponent,
     
-    ClientListComponent
+    ClientListComponent,
+    
+    UpdateEmployeeComponent
     
   ],
   imports: [
